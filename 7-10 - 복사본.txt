@@ -1,0 +1,30 @@
+
+		int N = sc.nextInt();sc.nextLine();
+		int GroupCount = 0;
+		
+		for(int i = 0; i < N; i++) {
+			String str = sc.nextLine();
+			
+			char lastC = 0;
+			char curC = 0;
+			
+			int[] arr = new int[26];
+			
+			boolean isGroup = true;
+			
+			for(int j = 0 ; j < str.length(); j++) {
+				curC = str.charAt(j);
+				
+				if(lastC != curC && arr[curC-97] > 0) {
+					isGroup = false;
+					break;
+				}
+				else
+					arr[curC-97]++;
+				
+				lastC = curC;
+			}
+			if(isGroup)GroupCount++;
+		}
+		System.out.println(GroupCount);
+		
